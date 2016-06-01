@@ -1,0 +1,27 @@
+RockSugarSystem
+
+Jun 1 Meeting 3pm - 4pm
+Chen/Sean
+
+1. customer subsystem UI
+
+1). table setup
+2). customer number setup
+3). language setup
+4). pot setup
+5). pot submit
+6). Manu order
+7). order list and submit
+
+details in the UI_Design.pdf
+
+2. add table class
+
+table:
+	tableIndex: the index for each table
+	customerCapacity: the maximum customer number for each table 
+	isAvailable: determine if the table is available
+	isClean: determine if the table is cleaned
+	
+	getter and setter
+	
