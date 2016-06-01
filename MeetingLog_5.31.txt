@@ -1,0 +1,53 @@
+Rock Sugar Manu System
+
+May 31 Meeting 5:30pm - 6:15pm
+Chen/Sophia/Sean
+
+1. System Structure
+
+		customer subsystem			admin subsystem			kitchen subsystem
+spot:		lobby					bar				kitchen
+user:		customer				manager/server			cook
+hardware:	ipad					server				screen + keyboard
+usage:		show Manu/make order			administration			prepare by the screen shown
+
+
+2. Data Flow
+
+orders set up by customers —> server receives the order and add it into the order queue —> order show up on the kitchen screen —> kitchen delete the order which have done —> server delete the done order out of the order queue
+
+
+3. Data Structure
+
+Dish: the dish present on the Manu
+Order: the elements of the Order Queue, which is a list of dishes for one customer
+Order Queue: A queue contains all orders from customers
+
+Dish:
+	dishName;
+	dishNum;
+	
+Order:
+	tableNO.;
+	customerNum;
+	orderTime;
+	dishList;
+	
+OrderQueue:
+	orderList;
+	
+		
+4. customer subsystem
+
+1).Flow:
+Step1: the server sets up Table No., Customer Number and Language -->
+Step2: the server takes the ipad to corresponding table -->
+Step3: the customer makes decision for dishes -->
+Step4: the customer confirms the order -->
+Step5: the order is sent to the admin subsystem (end).
+
+2).UI:
+details in the UI_Design.pdf
+
+
+
