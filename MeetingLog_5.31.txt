@@ -5,38 +5,63 @@ Chen/Sophia/Sean
 
 1. System Structure
 
+1).subsystems:
 		customer subsystem			admin subsystem			kitchen subsystem
 spot:		lobby					bar				kitchen
 user:		customer				manager/server			cook
 hardware:	ipad					server				screen + keyboard
 usage:		show Manu/make order			administration			prepare by the screen shown
 
+2).use MVC architecture
+
+Model: 
+View:
+Controller:
+Startup:
+
 
 2. Data Flow
 
-orders set up by customers —> server receives the order and add it into the order queue —> order show up on the kitchen screen —> kitchen delete the order which have done —> server delete the done order out of the order queue
+orders set up by customers —> 
+server receives the order and add it into the order queue —> 
+order show up on the kitchen screen —> 
+kitchen delete the order which have done —> 
+server delete the done order out of the order queue
 
 
 3. Data Structure
 
 Dish: the dish present on the Manu
 Order: the elements of the Order Queue, which is a list of dishes for one customer
-Order Queue: A queue contains all orders from customers
+OrderQueue: A queue contains all orders from customers
 
 Dish:
-	dishName;
-	dishNum;
+	dishName: the name of a dish
+	dishNum: the ordered number of this dish
+
+	toString(): displays the ordered dish information
 	
 Order:
-	tableNO.;
-	customerNum;
-	orderTime;
-	dishList;
+	tableIndex: the table index for this order
+	OrderIndex: the order index for each order
+	customerNum: the number of customer for this table 
+	orderTime: the time of order setup
+	dishNum: the number of dishes in this order
+	dishList: the list of all dishes
+	
+	addDish(dish): add new dish into the order
+	deleteDish(dish): delete a dish from the order
+	toString(): display all the dishes of the order
 	
 OrderQueue:
-	orderList;
+	orderList: the list of all orders
+	orderNum: the number of orders in the order queue
 	
+	addOrder(order): add new order at the tail
+	deleteOrder(order): delete the order at the front 
+	toString(): display all the order in a order queue
 		
+
 4. customer subsystem
 
 1).Flow:
