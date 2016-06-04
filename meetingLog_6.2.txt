@@ -1,0 +1,74 @@
+RockSugarSystem
+
+smooth data structure and data flow
+
+1. data flow
+
+add new class customerInfor which wrap Table, customer number, order index, language, time
+this class build up before start order start
+
+CustomerInfor:
+	table: Table
+	customerNum: int
+	orderIndex: OrderIndex
+	language: String
+	startTime: Time
+	
+2. order index form:
+
+	data	table index	repeat time	preserved	absolute number
+digit	6	2		2		2		4
+form	yymmdd	xx		xx		00		xxxx
+
+3. OrderIndex class 
+
+construct new OrderIndex
+
+OrderIndex:
+	index: int 
+
+4. Table class
+
+Table:
+	tableIndex: int
+	customerCapacity: int
+	isAvailable: bool
+	isClean: bool
+	customerNum: int, current customer number if in use
+	
+5. Order class
+
+Order:
+	customerInfor: CustomerInfor
+	dishList: LinkedList
+	orderTime: Time	
+
+6. Dish class
+
+Dish:
+	name: String
+	type: String, meat, veges, pot, beverage, alcohol, main
+	description: String
+
+7. DishProvided class
+
+extend Order class
+
+DishProvided:
+	isAvailable: 
+
+8. DishOrdered class
+
+extend DishProvided class
+
+DishOrdered:
+	dishNum: int
+	isEmergent: bool
+	
+9. OrderQueue:
+
+same as before
+
+OrderQueue:
+	orderList: LinkedList	
+	orderNum: int
