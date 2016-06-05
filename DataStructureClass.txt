@@ -1,0 +1,184 @@
+**************** Model ****************
+
+1. class Dish
+
+Dish:
+	name: String
+	image: Image
+	description: String
+	price: float
+
+	getter and setter
+
+2. class PotBase extends Dish
+
+PotBase:	
+
+3. class Food extends Dish
+
+Food:
+
+4. class Drink extends Dish
+
+Drink:
+
+5. class Main extends Food
+
+Main:
+
+6. class Meat extends Food
+
+Meat:
+
+7. class Vegetables extends Food
+
+Vegetables:
+
+8. class Desert extends Food
+
+Desert:
+
+9. class Beverage extends Drink
+
+Beverage:
+
+10. class Alcohol extends Drink
+
+Alcohol:
+
+11. interface Availability
+
+isAvailable(): bool
+
+12. interface Ordered
+
+isOrdered(): bool
+
+
+******************* Container ********************
+
+1. interface Container
+
+Container:
+	add(): add new dishes
+	delete(): delete a dish
+	
+2. class MainDic
+
+MainDic:
+	mainNum: int
+	mainList: LinkedList<Main>
+
+3. class MeatDic
+
+MeatDic:
+	meatNum: int
+	meatList: LinkedList<Meat>
+
+4. class VegetableDic
+
+VegetableDic:
+	vegetableNum: int
+	vegetableList: LinkedList<Vegetables>
+
+5. class DesertDic
+
+DesertDic:
+	desertNum: int
+	desertList: LinkedList<Desert>
+
+6. class BeverageDic
+
+BeverageDic:
+	beverageNum: int
+	beverageList: LinkedList<Beverage>
+
+7. class AlcoholDic
+
+AlcoholDic:
+	alcoholNum: int
+	alcoholList: LinkedList<Alcohol>
+
+8. class PotBaseDic
+
+PotBaseDic:
+	potBaseNum: int
+	potBaseList: LinkedList<PotBase>
+
+9. class FoodDic
+
+FoodDic:
+	foodNum: int
+	foodList: LinkedList<Container>
+
+10. class DrinkDic
+
+DrinkDic:
+	drinkNum: int
+	drinkList: LinkedList<Container>
+
+11. class DishDic
+
+DishDic:
+	dishNum: int
+	DishList: LinkedList<Container>
+
+***************** Menu *****************
+
+1. class MenuBase
+
+2. class MenuProvided
+
+3. class MenuOrdered
+
+***************** Room *****************
+
+1. class Table
+
+Table:
+	tableIndex: int
+	customerCapacity: int
+	isAvailable: bool
+	isClean: bool
+	customerNum: int, the current number of customer if in use
+
+2. class Lobby
+
+Lobby:
+	tableList: LinkedList<Table>
+	customerNum: int	
+
+3*. class KTVRoom
+
+***************** Order *****************
+
+1. class Order
+
+Order:	
+	orderIndex: int
+	dishesNum: int
+	dishes: MenuOrdered	
+
+2. class OrderSent extends Order
+
+OrderSent:
+	customerInfor: CustomerInfor
+	orderTime: Time
+
+***************** OrderInfor ******************
+
+1. class OrderInfor
+
+OrderInfor:
+	tableIndex: int
+	customerNum: int
+	language: String
+	startTime: Time
+
+***************** OrderQueue ******************
+
+1. class OrderQueue
+
+OrderQueue:
+	orderNum: int
+	orderList: LinkedList<OrderSent>
