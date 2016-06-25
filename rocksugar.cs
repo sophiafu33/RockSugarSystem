@@ -52,10 +52,10 @@ namespace model {
 		
 		/** the state options for a container */
 		public enum stateOptions {
-			Dining, Cleaning, Free, Checking, reparing
+			InUse, Cleaning, Free, Checking, reparing
 		}
 
-		abstract private setCapacityByIndex(int index);
+		abstract private void setCapacityByIndex(int index);
 	}
 
 	class table: customerContainer {
@@ -89,7 +89,7 @@ namespace model {
 			this.state = stateOptions.Free;
 		}
 
-		private setCapacityByIndex(int index) {
+		private void setCapacityByIndex(int index) {
 			if ( index == 4 ) {
 				this.capacity = 12;
 			}
@@ -176,6 +176,76 @@ namespace model {
 			billIndex += Integer.toString(00);
 			
 			return Integer.parseInt(billIndex);
+		}
+
+		public void setItemNumByListCount() {
+			this.itemNum = this.billItemList.count();
+		}
+	}
+
+	/*
+		this class defines the bill items for a bill
+	*/
+	class billItem {
+		/** the name for a bill item */
+		public String name {get; set;}
+
+		/** the item index for a bill item */
+		public int itemIndex {get; set;}
+
+		/** the quantity for a bill item */
+		public int quantity {get; set;}
+
+		/** the unit price for a item */
+		public float unitPrice {get; set;}
+
+		/** 
+			constructor for default 
+		*/
+		public billItem() {
+			this.name = "";
+			this.itemIndex = 0;
+			this.quantity = 0;
+			this.unitPrice = 0;
+		}
+
+		/*
+			constructor with a bill item name input for a bill item build up
+		*/
+		public billItem(String name) {
+			this.generateItemByItemName(name);	
+		}
+
+		public void generateItemByItemName(String name) {
+			String line = "";
+			String[] lineParts;
+			StreamReader reader = new StreamReader("billItemFile");
+			while ( (line = billItemFile.ReadLine()) != null ) {
+				lineParts = line.split(new String[]{' '});
+				if ( lineParts[0] == name ) {		
+					this.name = lineParts[0];
+					this.itemIndex = lineParts[1];
+					this.unitPrice = lineParts[2];	
+					this.quantity = 0;		
+					break;
+				}
+			}
+			reader.close();
+		}
+	}
+
+	class billItemList {
+
+		public int itemNum {get; set;}
+		public List<billItem> billItemList {get; set;}
+
+		public billItemList() {
+			this.billItemList = new List<billItem>();
+			this.itemNum = 0;
+		}
+
+		public int getItemNumFromList() {
+			return this.billItemList.count();
 		}
 	}
 }
